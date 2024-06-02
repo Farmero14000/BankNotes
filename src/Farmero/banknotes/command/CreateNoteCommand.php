@@ -10,6 +10,8 @@ use pocketmine\player\Player;
 
 use Farmero\banknotes\BankNotes;
 
+use Farmero\moneysystem\MoneySystem;
+
 class CreateNoteCommand extends Command {
 
     public function __construct() {
@@ -29,14 +31,13 @@ class CreateNoteCommand extends Command {
         }
 
         $amount = intval($args[0]);
-        $moneyManager = BankNotes::getInstance()->getMoneyManager();
 
-        if ($moneyManager->getMoney($sender) < $amount) {
+        if (MoneySystem::getInstance()->getMoneyManager()->getMoney($sender) < $amount) {
             $sender->sendMessage("You do not have enough money");
             return false;
         }
 
-        $moneyManager->removeMoney($sender, $amount);
+        MoneySystem::getInstance()->getMoneyManager()->removeMoney($sender, $amount);
         BankNotes::getInstance()->getNoteManager()->createNoteForPlayer($sender, $amount);
 
         $sender->sendMessage("Bank note created for $" . $amount);
