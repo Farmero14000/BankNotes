@@ -9,7 +9,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\ItemTypeIds;
 
-use Farmero\banknotes\commands\CreateNoteCommand;
+use Farmero\banknotes\command\CreateNoteCommand;
 
 use Farmero\banknotes\utils\NoteManager;
 
@@ -46,7 +46,7 @@ class BankNotes extends PluginBase implements Listener {
         return $this->noteManager;
     }
 
-    public function getMoneyManager(): MoneySystem {
+    public function getMoneyManager(): MoneyManager {
         return MoneySystem::getInstance()->getMoneyManager();
     }
 
