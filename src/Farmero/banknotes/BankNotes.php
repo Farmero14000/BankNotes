@@ -13,6 +13,8 @@ use Farmero\banknotes\command\CreateNoteCommand;
 
 use Farmero\banknotes\utils\NoteManager;
 
+use Farmero\moneysystem\MoneySystem;
+
 class BankNotes extends PluginBase implements Listener {
 
     public static $instance;
@@ -50,7 +52,7 @@ class BankNotes extends PluginBase implements Listener {
 
         if ($item->getTypeId() === ItemTypeIds::PAPER && $item->getNamedTag()->getTag("BankNoteAmount")) {
             $amount = $item->getNamedTag()->getInt("BankNoteAmount");
-            $this->getMoneyManager()->addMoney($player, $amount);
+            MoneySystem::getInstance()->getMoneyManager()->addMoney($player, $amount);
             $item->setCount($item->getCount() - 1);
             $player->getInventory()->setItemInHand($item);
             $player->sendMessage("You have redeemed a bank note worth $amount");
