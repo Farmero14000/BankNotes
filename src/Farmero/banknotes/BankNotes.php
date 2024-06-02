@@ -13,8 +13,6 @@ use Farmero\banknotes\command\CreateNoteCommand;
 
 use Farmero\banknotes\utils\NoteManager;
 
-use Farmero\moneysystem\MoneySystem;
-
 class BankNotes extends PluginBase implements Listener {
 
     public static $instance;
@@ -44,10 +42,6 @@ class BankNotes extends PluginBase implements Listener {
 
     public function getNoteManager(): NoteManager {
         return $this->noteManager;
-    }
-
-    public function getMoneyManager(): MoneyManager {
-        return MoneySystem::getInstance()->getMoneyManager();
     }
 
     public function onPlayerInteract(PlayerInteractEvent $event): void {
