@@ -1,0 +1,11 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Farmero14000/BankNotes
+build-by-default: true
+branches:
+- main
+projects:
+  BankNotes:
+    path: ""
+    libs:
+      - src: Farmero14/MoneySystem/MoneySystem
+        version: ^1.0.0
+...
