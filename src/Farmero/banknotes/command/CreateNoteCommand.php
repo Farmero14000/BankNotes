@@ -16,7 +16,7 @@ class CreateNoteCommand extends Command {
 
     public function __construct() {
         parent::__construct("banknote", "Create a bank note");
-        $this->setPermission("banknote.cmd");
+        $this->setPermission("banknotes.cmd");
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
